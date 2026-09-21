@@ -1,42 +1,194 @@
 @import "tailwindcss";
 
+/* ============================================
+   AURAVEST CORE — Design Token System
+   Linear / Vercel / TradingView Aesthetic
+   ============================================ */
+
+:root {
+  /* Background Hierarchy */
+  --av-bg: #0B0D12;
+  --av-surface: #12161D;
+  --av-elevated: #171C24;
+  --av-border: #28313D;
+  
+  /* Primary Accent */
+  --av-cyan: #19C3E6;
+  --av-cyan-soft: #103B46;
+  --av-cyan-glow: rgba(25, 195, 230, 0.15);
+  
+  /* Text Hierarchy */
+  --av-text-primary: #F4F7FA;
+  --av-text-secondary: #9AA6B2;
+  --av-text-tertiary: #5A6572;
+  
+  /* Semantic Colors */
+  --av-success: #42D392;
+  --av-warning: #F4B860;
+  --av-error: #FF5C5C;
+  --av-purple: #A855F7;
+  --av-blue: #3B82F6;
+  
+  /* Spacing (8px grid) */
+  --av-space-1: 4px;
+  --av-space-2: 8px;
+  --av-space-3: 12px;
+  --av-space-4: 16px;
+  --av-space-5: 20px;
+  --av-space-6: 24px;
+  --av-space-8: 32px;
+  --av-space-10: 40px;
+  --av-space-12: 48px;
+  
+  /* Layout */
+  --av-sidebar-width: 240px;
+  --av-sidebar-collapsed: 64px;
+  --av-header-height: 56px;
+  --av-right-panel-width: 320px;
+  
+  /* Transitions */
+  --av-transition-fast: 150ms ease;
+  --av-transition-normal: 200ms ease;
+  --av-transition-slow: 300ms ease;
+  
+  /* Border Radius */
+  --av-radius-sm: 6px;
+  --av-radius-md: 10px;
+  --av-radius-lg: 14px;
+  --av-radius-xl: 18px;
+  --av-radius-full: 9999px;
+}
+
 @layer base {
   body {
-    background-color: #080B11;
-    color: #F1F5F9;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--av-bg);
+    color: var(--av-text-primary);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* WCAG Focus Rings */
+  *:focus-visible {
+    outline: 2px solid var(--av-cyan);
+    outline-offset: 2px;
+    border-radius: var(--av-radius-sm);
+  }
+  
+  /* Minimum Touch Targets */
+  button, a, [role="button"] {
+    min-height: 32px;
   }
 }
 
-/* Glassmorphism helpers */
-.glass-panel {
-  background: rgba(15, 23, 42, 0.65);
+/* Surface Panel */
+.av-surface {
+  background-color: var(--av-surface);
+  border: 1px solid var(--av-border);
+  border-radius: var(--av-radius-lg);
+}
+
+.av-elevated {
+  background-color: var(--av-elevated);
+  border: 1px solid var(--av-border);
+  border-radius: var(--av-radius-lg);
+}
+
+/* Glassmorphism - refined */
+.av-glass {
+  background: rgba(18, 22, 29, 0.75);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(51, 65, 85, 0.45);
+  border: 1px solid var(--av-border);
 }
 
-.glass-panel-glow {
-  background: rgba(15, 23, 42, 0.75);
+.av-glass-glow {
+  background: rgba(18, 22, 29, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(99, 102, 241, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(79, 70, 229, 0.12);
+  border: 1px solid rgba(25, 195, 230, 0.2);
+  box-shadow: 0 8px 32px rgba(25, 195, 230, 0.08);
 }
 
-/* Custom Financial Scrollbar */
+/* Financial Mono Typography */
+.font-financial {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* Sidebar Active Indicator */
+.av-nav-active {
+  position: relative;
+  background-color: var(--av-cyan-soft);
+}
+.av-nav-active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  background-color: var(--av-cyan);
+  border-radius: 0 3px 3px 0;
+}
+
+/* Pulse Animation for Live Indicators */
+@keyframes av-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.av-pulse {
+  animation: av-pulse 2s ease-in-out infinite;
+}
+
+@keyframes av-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.av-spin {
+  animation: av-spin 1s linear infinite;
+}
+
+/* Slide In from Right */
+@keyframes av-slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.av-slide-in-right {
+  animation: av-slide-in-right 0.25s ease-out;
+}
+
+/* Toast Pop */
+@keyframes av-toast {
+  0% { transform: translateY(-10px); opacity: 0; }
+  10% { transform: translateY(0); opacity: 1; }
+  90% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-10px); opacity: 0; }
+}
+.av-toast {
+  animation: av-toast 3.5s ease-in-out forwards;
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #080B11;
+  background: var(--av-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
+  background: var(--av-border);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #3A4555;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(25, 195, 230, 0.3);
+  color: var(--av-text-primary);
 }

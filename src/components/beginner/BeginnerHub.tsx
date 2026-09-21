@@ -84,9 +84,9 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
 
   const getRiskProfile = () => {
     const sum = riskAnswers.reduce((a, b) => a + b, 0);
-    if (sum <= 3) return { title: 'Conservative Capital Preserver', badge: 'Low Risk', color: 'text-emerald-400' };
-    if (sum <= 6) return { title: 'Balanced Wealth Compounder', badge: 'Moderate Risk', color: 'text-blue-400' };
-    return { title: 'Aggressive Growth Hunter', badge: 'High Growth', color: 'text-purple-400' };
+    if (sum <= 3) return { title: 'Conservative Capital Preserver', badge: 'Low Risk', color: 'text-[#42D392]' };
+    if (sum <= 6) return { title: 'Balanced Wealth Compounder', badge: 'Moderate Risk', color: 'text-[#3B82F6]' };
+    return { title: 'Aggressive Growth Hunter', badge: 'High Growth', color: 'text-[#A855F7]' };
   };
 
   const handleBasketInvest = (basket: SmartBasket) => {
@@ -97,18 +97,18 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
   return (
     <div className="space-y-8 pb-20">
       {/* 1. HERO BANNER */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 p-8 border border-slate-700/80 shadow-2xl">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 p-8 border border-[#28313D] shadow-2xl">
         <div className="relative z-10 max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full text-xs font-bold">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#103B46] border border-[#19C3E6]/20 text-[#42D392] rounded-full text-xs font-bold">
             <Sparkles className="w-3.5 h-3.5" /> Beginner-First Investing Suite
           </div>
-          <h1 className="text-3xl font-black text-white tracking-tight">
+          <h1 className="text-3xl font-black text-[#F4F7FA] tracking-tight">
             Start Simple. Grow Big. <br />
-            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#42D392] via-teal-300 to-indigo-400 bg-clip-text text-transparent">
               No Wall Street Jargon.
             </span>
           </h1>
-          <p className="text-sm text-slate-300 leading-relaxed">
+          <p className="text-sm text-[#9AA6B2] leading-relaxed">
             Whether planning for a future home, retirement, or financial independence, AuraVest automates disciplined wealth creation with smart baskets, compounding calculators, and personalized risk profiling.
           </p>
         </div>
@@ -117,51 +117,51 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
       {/* 2. THREE CORE COLUMNS: LEARN & INVEST, GOAL SIP PLANNER, RISK QUIZ */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* A: Learn & Invest (Jargon-Free Flashcards) */}
-        <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 p-6 rounded-2xl shadow-xl flex flex-col justify-between">
+        <div className="bg-[#12161D] backdrop-blur-xl border border-[#28313D] p-6 rounded-xl shadow-xl flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-emerald-400 uppercase tracking-wider mb-4">
+            <div className="flex items-center gap-2 text-xs font-bold text-[#42D392] uppercase tracking-wider mb-4">
               <BookOpen className="w-4 h-4" /> Learn & Invest: Core Fundamentals
             </div>
             
             <div className="space-y-3 text-xs">
-              <div className="p-3 bg-slate-800/60 border border-slate-700/50 rounded-xl">
-                <span className="font-bold text-white block mb-0.5">What is a SIP?</span>
-                <span className="text-slate-400">A Systematic Investment Plan automatically invests a fixed amount monthly, smoothing market dips via Dollar-Cost Averaging.</span>
+              <div className="p-3 bg-[#171C24] border border-[#28313D] rounded-xl">
+                <span className="font-bold text-[#F4F7FA] block mb-0.5">What is a SIP?</span>
+                <span className="text-[#9AA6B2]">A Systematic Investment Plan automatically invests a fixed amount monthly, smoothing market dips via Dollar-Cost Averaging.</span>
               </div>
 
-              <div className="p-3 bg-slate-800/60 border border-slate-700/50 rounded-xl">
-                <span className="font-bold text-white block mb-0.5">Why Expense Ratios Matter?</span>
-                <span className="text-slate-400">It is the annual management fee charged by mutual funds. A lower expense ratio (e.g. &lt;0.25%) keeps more returns in your pocket.</span>
+              <div className="p-3 bg-[#171C24] border border-[#28313D] rounded-xl">
+                <span className="font-bold text-[#F4F7FA] block mb-0.5">Why Expense Ratios Matter?</span>
+                <span className="text-[#9AA6B2]">It is the annual management fee charged by mutual funds. A lower expense ratio (e.g. &lt;0.25%) keeps more returns in your pocket.</span>
               </div>
 
-              <div className="p-3 bg-slate-800/60 border border-slate-700/50 rounded-xl">
-                <span className="font-bold text-white block mb-0.5">The Magic of Compounding</span>
-                <span className="text-slate-400">Earning interest on your previously earned returns. Over 10+ years, compounding can exceed your initial capital by 3x to 5x.</span>
+              <div className="p-3 bg-[#171C24] border border-[#28313D] rounded-xl">
+                <span className="font-bold text-[#F4F7FA] block mb-0.5">The Magic of Compounding</span>
+                <span className="text-[#9AA6B2]">Earning interest on your previously earned returns. Over 10+ years, compounding can exceed your initial capital by 3x to 5x.</span>
               </div>
             </div>
           </div>
 
-          <div className="mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-500">
+          <div className="mt-4 pt-3 border-t border-[#28313D] text-[11px] text-[#5A6572]">
             💡 Verified by AuraVest Wealth Academy Curriculum
           </div>
         </div>
 
         {/* B: Goal-Based SIP Planner */}
-        <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 p-6 rounded-2xl shadow-xl">
+        <div className="bg-[#12161D] backdrop-blur-xl border border-[#28313D] p-6 rounded-xl shadow-xl">
           <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2 text-xs font-bold text-blue-400 uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-xs font-bold text-[#3B82F6] uppercase tracking-wider">
               <Target className="w-4 h-4" /> Goal-Based SIP Planner
             </div>
-            <Calculator className="w-4 h-4 text-slate-500" />
+            <Calculator className="w-4 h-4 text-[#5A6572]" />
           </div>
 
           <div className="space-y-4 text-xs">
             <div>
-              <label className="text-slate-400 font-semibold block mb-1">Target Life Goal</label>
+              <label className="text-[#9AA6B2] font-semibold block mb-1">Target Life Goal</label>
               <select
                 value={goalName}
                 onChange={(e) => setGoalName(e.target.value)}
-                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white text-xs focus:outline-none"
+                className="w-full bg-[#171C24] border border-[#28313D] rounded-xl px-3 py-2 text-[#F4F7FA] text-xs focus:outline-none"
               >
                 <option value="Dream Home">🏡 First Dream Home ($100k)</option>
                 <option value="Retirement Wealth">🏖️ Financial Independence / Retirement ($500k)</option>
@@ -171,9 +171,9 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
             </div>
 
             <div>
-              <div className="flex justify-between text-slate-400 mb-1">
+              <div className="flex justify-between text-[#9AA6B2] mb-1">
                 <span>Target Capital:</span>
-                <span className="font-mono font-bold text-white">${targetAmount.toLocaleString()}</span>
+                <span className="font-mono font-bold text-[#F4F7FA]">${targetAmount.toLocaleString()}</span>
               </div>
               <input
                 type="range"
@@ -182,14 +182,14 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
                 step="10000"
                 value={targetAmount}
                 onChange={(e) => setTargetAmount(Number(e.target.value))}
-                className="w-full accent-blue-500"
+                className="w-full accent-[#19C3E6]"
               />
             </div>
 
             <div>
-              <div className="flex justify-between text-slate-400 mb-1">
+              <div className="flex justify-between text-[#9AA6B2] mb-1">
                 <span>Investment Horizon:</span>
-                <span className="font-mono font-bold text-white">{horizonYears} Years</span>
+                <span className="font-mono font-bold text-[#F4F7FA]">{horizonYears} Years</span>
               </div>
               <input
                 type="range"
@@ -198,14 +198,14 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
                 step="1"
                 value={horizonYears}
                 onChange={(e) => setHorizonYears(Number(e.target.value))}
-                className="w-full accent-blue-500"
+                className="w-full accent-[#19C3E6]"
               />
             </div>
 
             <div>
-              <div className="flex justify-between text-slate-400 mb-1">
+              <div className="flex justify-between text-[#9AA6B2] mb-1">
                 <span>Expected Annual CAGR:</span>
-                <span className="font-mono font-bold text-white">{expectedCAGR}%</span>
+                <span className="font-mono font-bold text-[#F4F7FA]">{expectedCAGR}%</span>
               </div>
               <input
                 type="range"
@@ -214,17 +214,17 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
                 step="1"
                 value={expectedCAGR}
                 onChange={(e) => setExpectedCAGR(Number(e.target.value))}
-                className="w-full accent-blue-500"
+                className="w-full accent-[#19C3E6]"
               />
             </div>
 
             {/* Calculated SIP Result Card */}
-            <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-2xl text-center">
-              <span className="text-[11px] text-blue-300 font-semibold block uppercase">Required Monthly Investment</span>
-              <div className="text-2xl font-black text-white font-mono my-1">
-                ${monthlySIPRequired.toLocaleString()} <span className="text-xs text-slate-400 font-normal">/ mo</span>
+            <div className="p-4 bg-[#3B82F6]/10 border border-blue-500/20 rounded-xl text-center">
+              <span className="text-[11px] text-[#60A5FA] font-semibold block uppercase">Required Monthly Investment</span>
+              <div className="text-2xl font-black text-[#F4F7FA] font-mono my-1">
+                ${monthlySIPRequired.toLocaleString()} <span className="text-xs text-[#9AA6B2] font-normal">/ mo</span>
               </div>
-              <span className="text-[10px] text-blue-300/80">
+              <span className="text-[10px] text-[#60A5FA]/80">
                 To achieve ${targetAmount.toLocaleString()} in {horizonYears} years @ {expectedCAGR}% CAGR
               </span>
             </div>
@@ -232,18 +232,18 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
         </div>
 
         {/* C: Interactive Risk Appetite Wizard */}
-        <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 p-6 rounded-2xl shadow-xl flex flex-col justify-between">
+        <div className="bg-[#12161D] backdrop-blur-xl border border-[#28313D] p-6 rounded-xl shadow-xl flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2 text-xs font-bold text-purple-400 uppercase tracking-wider">
+              <div className="flex items-center gap-2 text-xs font-bold text-[#A855F7] uppercase tracking-wider">
                 <Shield className="w-4 h-4" /> Risk-Appetite Profiler
               </div>
-              <span className="text-xs font-mono text-slate-500">Step {activeStep + 1}/3</span>
+              <span className="text-xs font-mono text-[#5A6572]">Step {activeStep + 1}/3</span>
             </div>
 
             {activeStep === 0 && (
               <div className="space-y-3 text-xs">
-                <p className="text-white font-semibold">1. If your portfolio dropped 15% in a single month during a market pullback, what would you do?</p>
+                <p className="text-[#F4F7FA] font-semibold">1. If your portfolio dropped 15% in a single month during a market pullback, what would you do?</p>
                 <div className="space-y-2">
                   {[
                     { text: 'Sell immediately to prevent further loss', val: 1 },
@@ -260,8 +260,8 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
                       }}
                       className={`w-full p-2.5 text-left rounded-xl border transition text-xs ${
                         riskAnswers[0] === opt.val
-                          ? 'bg-purple-600/30 border-purple-500 text-white'
-                          : 'bg-slate-800/40 border-slate-700/60 text-slate-300 hover:bg-slate-800'
+                          ? 'bg-[#A855F7]/15 border-[#A855F7]/30 text-[#F4F7FA]'
+                          : 'bg-[#171C24] border-[#28313D] text-[#9AA6B2] hover:bg-[#171C24]'
                       }`}
                     >
                       {opt.text}
@@ -273,7 +273,7 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
 
             {activeStep === 1 && (
               <div className="space-y-3 text-xs">
-                <p className="text-white font-semibold">2. What is your primary investment objective?</p>
+                <p className="text-[#F4F7FA] font-semibold">2. What is your primary investment objective?</p>
                 <div className="space-y-2">
                   {[
                     { text: 'Preserve initial capital with inflation beat', val: 1 },
@@ -290,8 +290,8 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
                       }}
                       className={`w-full p-2.5 text-left rounded-xl border transition text-xs ${
                         riskAnswers[1] === opt.val
-                          ? 'bg-purple-600/30 border-purple-500 text-white'
-                          : 'bg-slate-800/40 border-slate-700/60 text-slate-300 hover:bg-slate-800'
+                          ? 'bg-[#A855F7]/15 border-[#A855F7]/30 text-[#F4F7FA]'
+                          : 'bg-[#171C24] border-[#28313D] text-[#9AA6B2] hover:bg-[#171C24]'
                       }`}
                     >
                       {opt.text}
@@ -303,7 +303,7 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
 
             {activeStep === 2 && (
               <div className="space-y-3 text-xs">
-                <p className="text-white font-semibold">3. How long do you plan to keep your capital invested?</p>
+                <p className="text-[#F4F7FA] font-semibold">3. How long do you plan to keep your capital invested?</p>
                 <div className="space-y-2">
                   {[
                     { text: 'Less than 2 years (Short horizon)', val: 1 },
@@ -319,8 +319,8 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
                       }}
                       className={`w-full p-2.5 text-left rounded-xl border transition text-xs ${
                         riskAnswers[2] === opt.val
-                          ? 'bg-purple-600/30 border-purple-500 text-white'
-                          : 'bg-slate-800/40 border-slate-700/60 text-slate-300 hover:bg-slate-800'
+                          ? 'bg-[#A855F7]/15 border-[#A855F7]/30 text-[#F4F7FA]'
+                          : 'bg-[#171C24] border-[#28313D] text-[#9AA6B2] hover:bg-[#171C24]'
                       }`}
                     >
                       {opt.text}
@@ -331,9 +331,9 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
             )}
           </div>
 
-          <div className="mt-4 pt-4 border-t border-slate-800">
-            <div className="p-3 bg-purple-500/10 border border-purple-500/20 rounded-xl text-center">
-              <span className="text-[10px] text-purple-300 font-bold uppercase tracking-wider block">Identified Investor Profile</span>
+          <div className="mt-4 pt-4 border-t border-[#28313D]">
+            <div className="p-3 bg-[#A855F7]/15 border border-[#A855F7]/30 rounded-xl text-center">
+              <span className="text-[10px] text-[#A855F7] font-bold uppercase tracking-wider block">Identified Investor Profile</span>
               <span className={`text-sm font-bold ${getRiskProfile().color} block mt-0.5`}>
                 {getRiskProfile().title}
               </span>
@@ -341,7 +341,7 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
             {activeStep > 0 && (
               <button 
                 onClick={() => setActiveStep(0)} 
-                className="w-full text-center text-[10px] text-slate-400 hover:text-white mt-2 underline"
+                className="w-full text-center text-[10px] text-[#9AA6B2] hover:text-[#F4F7FA] mt-2 underline"
               >
                 Retake Questionnaire
               </button>
@@ -354,11 +354,11 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
-              <Layers className="w-5 h-5 text-emerald-400" />
+            <h2 className="text-xl font-bold text-[#F4F7FA] tracking-tight flex items-center gap-2">
+              <Layers className="w-5 h-5 text-[#42D392]" />
               One-Click Thematic Smart Baskets
             </h2>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-[#9AA6B2]">
               Institutional-grade multi-stock diversification with a single tap. Instant portfolio rebalancing.
             </p>
           </div>
@@ -368,47 +368,47 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
           {SMART_BASKETS.map((basket) => (
             <div
               key={basket.id}
-              className="bg-slate-900/70 border border-slate-800/90 rounded-2xl p-6 flex flex-col justify-between hover:border-slate-700 transition shadow-xl group"
+              className="bg-[#12161D] border border-[#28313D] rounded-xl p-6 flex flex-col justify-between hover:border-[#3A4555] transition shadow-xl group"
             >
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-mono text-slate-400">{basket.category}</span>
+                  <span className="text-xs font-mono text-[#9AA6B2]">{basket.category}</span>
                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
                     basket.riskLevel === 'High' 
-                      ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20' 
+                      ? 'bg-[#FF5C5C]/10 text-[#FF5C5C] border border-rose-500/20' 
                       : basket.riskLevel === 'Moderate'
-                      ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
-                      : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                      ? 'bg-[#F4B860]/10 text-[#F4B860] border border-amber-500/20'
+                      : 'bg-[#103B46] text-[#42D392] border border-emerald-500/20'
                   }`}>
                     {basket.riskLevel} Risk
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition">
+                <h3 className="text-lg font-bold text-[#F4F7FA] group-hover:text-[#42D392] transition">
                   {basket.name}
                 </h3>
-                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                <p className="text-xs text-[#9AA6B2] mt-2 leading-relaxed">
                   {basket.description}
                 </p>
 
-                <div className="my-4 py-3 border-y border-slate-800/80 flex items-center justify-between">
+                <div className="my-4 py-3 border-y border-[#28313D] flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] text-slate-500 uppercase block font-semibold">3-Year Trailing CAGR</span>
-                    <span className="text-lg font-black text-emerald-400 font-mono">+{basket.cagr3Y}%</span>
+                    <span className="text-[10px] text-[#5A6572] uppercase block font-semibold">3-Year Trailing CAGR</span>
+                    <span className="text-lg font-black text-[#42D392] font-mono">+{basket.cagr3Y}%</span>
                   </div>
                   <div className="text-right">
-                    <span className="text-[10px] text-slate-500 uppercase block font-semibold">Min. Starting Capital</span>
-                    <span className="text-lg font-black text-white font-mono">${basket.minInvestment}</span>
+                    <span className="text-[10px] text-[#5A6572] uppercase block font-semibold">Min. Starting Capital</span>
+                    <span className="text-lg font-black text-[#F4F7FA] font-mono">${basket.minInvestment}</span>
                   </div>
                 </div>
 
                 {/* Holdings Weights */}
                 <div className="space-y-1.5 mb-4">
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider block">Top Basket Weights</span>
+                  <span className="text-[10px] text-[#9AA6B2] font-semibold uppercase tracking-wider block">Top Basket Weights</span>
                   {basket.holdings.map((h, i) => (
                     <div key={i} className="flex justify-between items-center text-xs">
-                      <span className="text-slate-300 truncate">{h.name}</span>
-                      <span className="font-mono text-slate-400">{h.allocationPct}%</span>
+                      <span className="text-[#9AA6B2] truncate">{h.name}</span>
+                      <span className="font-mono text-[#9AA6B2]">{h.allocationPct}%</span>
                     </div>
                   ))}
                 </div>
@@ -416,7 +416,7 @@ export const BeginnerHub: React.FC<{ onInvestBasket: (name: string, amount: numb
 
               <button
                 onClick={() => handleBasketInvest(basket)}
-                className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 active:scale-95"
+                className="w-full py-2.5 bg-[#19C3E6] hover:bg-[#14A8C7] text-slate-950 font-bold text-xs rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-[#19C3E6]/20 active:scale-95"
               >
                 <Zap className="w-4 h-4" /> One-Click Invest (${basket.minInvestment})
               </button>

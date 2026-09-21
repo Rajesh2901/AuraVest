@@ -143,3 +143,27 @@ export interface AssetDetail {
 
 export type OrderType = 'MARKET' | 'LIMIT' | 'STOP_LOSS' | 'COVER' | 'BRACKET';
 export type OrderSide = 'BUY' | 'SELL';
+
+// Navigation & Layout Types
+export type SidebarSection = 'portfolio' | 'explore' | 'trading' | 'sip' | 'account';
+
+export interface NavigationItem {
+  id: string;
+  label: string;
+  icon: string;
+  section: SidebarSection;
+  badge?: string;
+}
+
+export type RightPanelContext = 'insights' | 'orderbook' | 'comparison' | 'none';
+
+// Micro-State Types
+export type MicroState = 'idle' | 'loading' | 'processing' | 'success' | 'error' | 'empty';
+
+export interface MicroStateConfig {
+  state: MicroState;
+  title?: string;
+  message?: string;
+  actionLabel?: string;
+  onAction?: () => void;
+}

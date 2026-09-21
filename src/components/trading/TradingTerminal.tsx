@@ -73,14 +73,14 @@ export const TradingTerminal: React.FC = () => {
     <div className="space-y-4 pb-20 font-sans">
       {/* Toast Alert */}
       {toastMessage && (
-        <div className="fixed top-20 right-6 z-50 bg-emerald-500 text-slate-950 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 text-xs font-bold animate-bounce backdrop-blur-md">
+        <div className="fixed top-20 right-6 z-50 bg-[#19C3E6] text-slate-950 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 text-xs font-bold animate-bounce backdrop-blur-md">
           <CheckCircle2 className="w-4 h-4" />
           <span>{toastMessage}</span>
         </div>
       )}
 
       {/* TOP TICKER & INSTRUMENT BAR */}
-      <div className="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-[#12161D] backdrop-blur-xl border border-[#28313D] rounded-xl p-4 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             {['NVDA', 'BTC', 'SPY', 'AAPL'].map((sym) => (
@@ -89,8 +89,8 @@ export const TradingTerminal: React.FC = () => {
                 onClick={() => setActiveSymbol(sym)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold transition ${
                   activeSymbol === sym
-                    ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
-                    : 'bg-slate-800 text-slate-400 hover:text-white'
+                    ? 'bg-[#19C3E6] text-slate-950 shadow-md shadow-[#19C3E6]/20'
+                    : 'bg-[#171C24] text-[#9AA6B2] hover:text-[#F4F7FA]'
                 }`}
               >
                 {sym}
@@ -98,13 +98,13 @@ export const TradingTerminal: React.FC = () => {
             ))}
           </div>
 
-          <div className="h-6 w-px bg-slate-800 hidden sm:block" />
+          <div className="h-6 w-px bg-[#171C24] hidden sm:block" />
 
           <div className="flex items-baseline gap-2">
-            <span className="text-xl font-mono font-bold text-white tracking-tight">
+            <span className="text-xl font-mono font-bold text-[#F4F7FA] tracking-tight">
               ${currentPrice.toFixed(2)}
             </span>
-            <span className={`text-xs font-mono font-bold flex items-center ${change24hPct >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+            <span className={`text-xs font-mono font-bold flex items-center ${change24hPct >= 0 ? 'text-[#42D392]' : 'text-[#FF5C5C]'}`}>
               {change24hPct >= 0 ? <ArrowUpRight className="w-3.5 h-3.5 mr-0.5" /> : <ArrowDownRight className="w-3.5 h-3.5 mr-0.5" />}
               {change24hPct >= 0 ? `+${change24hPct}%` : `${change24hPct}%`}
             </span>
@@ -112,15 +112,15 @@ export const TradingTerminal: React.FC = () => {
         </div>
 
         {/* Timeframe Selectors */}
-        <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
+        <div className="flex items-center gap-1 bg-[#0B0D12] p-1 rounded-xl border border-[#28313D]">
           {(['1m', '5m', '15m', '1h', '1D', '1W'] as const).map((tf) => (
             <button
               key={tf}
               onClick={() => setActiveTimeframe(tf)}
               className={`px-2.5 py-1 text-[11px] font-mono font-bold rounded-lg transition ${
                 activeTimeframe === tf
-                  ? 'bg-slate-800 text-emerald-400 shadow-sm'
-                  : 'text-slate-500 hover:text-slate-300'
+                  ? 'bg-[#171C24] text-[#42D392] shadow-sm'
+                  : 'text-[#5A6572] hover:text-[#9AA6B2]'
               }`}
             >
               {tf}
@@ -132,17 +132,17 @@ export const TradingTerminal: React.FC = () => {
       {/* 3-COLUMN WORKSPACE: CANDLESTICK CANVAS, L2 ORDER BOOK, AND ADVANCED ORDER TICKET */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
         {/* Candlestick Chart (7 Cols) */}
-        <div className="lg:col-span-7 bg-slate-900/70 backdrop-blur-xl border border-slate-800 rounded-2xl p-5 relative flex flex-col justify-between">
+        <div className="lg:col-span-7 bg-[#12161D] backdrop-blur-xl border border-[#28313D] rounded-xl p-5 relative flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-3 text-xs">
-              <span className="font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                <Activity className="w-4 h-4 text-emerald-400" />
+              <span className="font-semibold text-[#9AA6B2] uppercase tracking-wider flex items-center gap-1.5">
+                <Activity className="w-4 h-4 text-[#42D392]" />
                 Multi-Timeframe Candlestick Engine
               </span>
-              <div className="flex items-center gap-3 font-mono text-slate-400 text-[11px]">
-                <span>EMA 20: <strong className="text-blue-400">${(currentPrice * 0.992).toFixed(2)}</strong></span>
-                <span>RSI (14): <strong className="text-purple-400">58.4</strong></span>
-                <span>VWAP: <strong className="text-amber-400">${(currentPrice * 0.998).toFixed(2)}</strong></span>
+              <div className="flex items-center gap-3 font-mono text-[#9AA6B2] text-[11px]">
+                <span>EMA 20: <strong className="text-[#3B82F6]">${(currentPrice * 0.992).toFixed(2)}</strong></span>
+                <span>RSI (14): <strong className="text-[#A855F7]">58.4</strong></span>
+                <span>VWAP: <strong className="text-[#F4B860]">${(currentPrice * 0.998).toFixed(2)}</strong></span>
               </div>
             </div>
 
@@ -210,18 +210,18 @@ export const TradingTerminal: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 pt-3 border-t border-slate-800">
+          <div className="flex items-center justify-between text-[11px] font-mono text-[#5A6572] pt-3 border-t border-[#28313D]">
             <span>Aggregated Feed: Zero-Latency Real-Time Tick Stream</span>
             <span>Spread: <strong>{orderBook.spreadBps} bps</strong></span>
           </div>
         </div>
 
         {/* L2 Order Book Depth Ladder (2.5 Cols) */}
-        <div className="lg:col-span-2 bg-slate-900/70 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 flex flex-col justify-between">
+        <div className="lg:col-span-2 bg-[#12161D] backdrop-blur-xl border border-[#28313D] rounded-xl p-4 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">L2 Depth</span>
-              <span className="text-[10px] font-mono text-slate-400">Spread: ${orderBook.spread}</span>
+              <span className="text-xs font-bold text-[#9AA6B2] uppercase tracking-wider">L2 Depth</span>
+              <span className="text-[10px] font-mono text-[#9AA6B2]">Spread: ${orderBook.spread}</span>
             </div>
 
             {/* Asks (Red) */}
@@ -229,19 +229,19 @@ export const TradingTerminal: React.FC = () => {
               {orderBook.asks.slice(0, 5).reverse().map((ask, i) => (
                 <div key={i} className="flex justify-between items-center relative py-0.5">
                   <div 
-                    className="absolute right-0 top-0 bottom-0 bg-rose-500/10 rounded-sm"
+                    className="absolute right-0 top-0 bottom-0 bg-[#FF5C5C]/10 rounded-sm"
                     style={{ width: `${Math.min(100, (ask.total / 1500) * 100)}%` }}
                   />
-                  <span className="text-rose-400 font-semibold z-10">${ask.price.toFixed(2)}</span>
-                  <span className="text-slate-400 z-10">{ask.size}</span>
+                  <span className="text-[#FF5C5C] font-semibold z-10">${ask.price.toFixed(2)}</span>
+                  <span className="text-[#9AA6B2] z-10">{ask.size}</span>
                 </div>
               ))}
             </div>
 
             {/* Mid Market Price Banner */}
-            <div className="py-2 px-3 bg-slate-950 border-y border-slate-800 my-2 flex justify-between items-center font-mono">
-              <span className="text-xs font-bold text-white">${currentPrice.toFixed(2)}</span>
-              <span className="text-[10px] text-emerald-400">Live Mid</span>
+            <div className="py-2 px-3 bg-[#0B0D12] border-y border-[#28313D] my-2 flex justify-between items-center font-mono">
+              <span className="text-xs font-bold text-[#F4F7FA]">${currentPrice.toFixed(2)}</span>
+              <span className="text-[10px] text-[#42D392]">Live Mid</span>
             </div>
 
             {/* Bids (Green) */}
@@ -249,27 +249,27 @@ export const TradingTerminal: React.FC = () => {
               {orderBook.bids.slice(0, 5).map((bid, i) => (
                 <div key={i} className="flex justify-between items-center relative py-0.5">
                   <div 
-                    className="absolute right-0 top-0 bottom-0 bg-emerald-500/10 rounded-sm"
+                    className="absolute right-0 top-0 bottom-0 bg-[#103B46] rounded-sm"
                     style={{ width: `${Math.min(100, (bid.total / 1500) * 100)}%` }}
                   />
-                  <span className="text-emerald-400 font-semibold z-10">${bid.price.toFixed(2)}</span>
-                  <span className="text-slate-400 z-10">{bid.size}</span>
+                  <span className="text-[#42D392] font-semibold z-10">${bid.price.toFixed(2)}</span>
+                  <span className="text-[#9AA6B2] z-10">{bid.size}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="mt-4 pt-2 border-t border-slate-800 text-[10px] text-slate-500 font-mono text-center">
+          <div className="mt-4 pt-2 border-t border-[#28313D] text-[10px] text-[#5A6572] font-mono text-center">
             Cumulative Depth Buffer
           </div>
         </div>
 
         {/* Advanced Order Ticket (2.5 Cols) */}
-        <div className="lg:col-span-3 bg-slate-900/70 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 flex flex-col justify-between">
+        <div className="lg:col-span-3 bg-[#12161D] backdrop-blur-xl border border-[#28313D] rounded-xl p-4 flex flex-col justify-between">
           <form onSubmit={handleOrderSubmit} className="space-y-3">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">Order Ticket</span>
-              <span className="text-[10px] font-mono text-emerald-400 font-semibold">Ready</span>
+              <span className="text-xs font-bold text-[#9AA6B2] uppercase tracking-wider">Order Ticket</span>
+              <span className="text-[10px] font-mono text-[#42D392] font-semibold">Ready</span>
             </div>
 
             {/* Buy / Sell Tabs */}
@@ -279,8 +279,8 @@ export const TradingTerminal: React.FC = () => {
                 onClick={() => setSide('BUY')}
                 className={`flex-1 py-1.5 text-xs font-bold rounded-xl transition ${
                   side === 'BUY'
-                    ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
-                    : 'bg-slate-800 text-slate-400'
+                    ? 'bg-[#19C3E6] text-slate-950 shadow-md shadow-[#19C3E6]/20'
+                    : 'bg-[#171C24] text-[#9AA6B2]'
                 }`}
               >
                 BUY / LONG
@@ -290,8 +290,8 @@ export const TradingTerminal: React.FC = () => {
                 onClick={() => setSide('SELL')}
                 className={`flex-1 py-1.5 text-xs font-bold rounded-xl transition ${
                   side === 'SELL'
-                    ? 'bg-rose-500 text-white shadow-md shadow-rose-500/20'
-                    : 'bg-slate-800 text-slate-400'
+                    ? 'bg-[#FF5C5C] text-[#F4F7FA] shadow-md shadow-[#FF5C5C]/20'
+                    : 'bg-[#171C24] text-[#9AA6B2]'
                 }`}
               >
                 SELL / SHORT
@@ -299,14 +299,14 @@ export const TradingTerminal: React.FC = () => {
             </div>
 
             {/* Order Type Selector */}
-            <div className="grid grid-cols-4 gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800 text-[10px] font-semibold">
+            <div className="grid grid-cols-4 gap-1 bg-[#0B0D12] p-1 rounded-xl border border-[#28313D] text-[10px] font-semibold">
               {(['MARKET', 'LIMIT', 'STOP_LOSS', 'BRACKET'] as const).map((type) => (
                 <button
                   key={type}
                   type="button"
                   onClick={() => setOrderType(type)}
                   className={`py-1 rounded-lg transition ${
-                    orderType === type ? 'bg-slate-800 text-white' : 'text-slate-500 hover:text-slate-300'
+                    orderType === type ? 'bg-[#171C24] text-[#F4F7FA]' : 'text-[#5A6572] hover:text-[#9AA6B2]'
                   }`}
                 >
                   {type === 'STOP_LOSS' ? 'STOP' : type === 'BRACKET' ? 'OCO' : type}
@@ -316,25 +316,25 @@ export const TradingTerminal: React.FC = () => {
 
             {/* Quantity */}
             <div>
-              <label className="text-[11px] font-semibold text-slate-400 block mb-1">Quantity (Units)</label>
+              <label className="text-[11px] font-semibold text-[#9AA6B2] block mb-1">Quantity (Units)</label>
               <input
                 type="number"
                 value={shares}
                 onChange={(e) => setShares(e.target.value)}
-                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-emerald-500"
+                className="w-full bg-[#171C24] border border-[#28313D] rounded-xl px-3 py-1.5 text-xs text-[#F4F7FA] font-mono focus:outline-none focus:border-[#42D392]"
               />
             </div>
 
             {/* Limit Price Input if needed */}
             {orderType !== 'MARKET' && (
               <div>
-                <label className="text-[11px] font-semibold text-slate-400 block mb-1">Limit Price ($)</label>
+                <label className="text-[11px] font-semibold text-[#9AA6B2] block mb-1">Limit Price ($)</label>
                 <input
                   type="number"
                   step="0.01"
                   value={limitPrice}
                   onChange={(e) => setLimitPrice(e.target.value)}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-[#171C24] border border-[#28313D] rounded-xl px-3 py-1.5 text-xs text-[#F4F7FA] font-mono focus:outline-none focus:border-[#42D392]"
                 />
               </div>
             )}
@@ -343,39 +343,39 @@ export const TradingTerminal: React.FC = () => {
             {orderType === 'BRACKET' && (
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="text-[10px] font-semibold text-rose-400 block mb-1">Stop Loss ($)</label>
+                  <label className="text-[10px] font-semibold text-[#FF5C5C] block mb-1">Stop Loss ($)</label>
                   <input
                     type="number"
                     step="0.01"
                     value={stopLoss}
                     onChange={(e) => setStopLoss(e.target.value)}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-xl px-2 py-1 text-xs text-white font-mono focus:outline-none"
+                    className="w-full bg-[#171C24] border border-[#28313D] rounded-xl px-2 py-1 text-xs text-[#F4F7FA] font-mono focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label className="text-[10px] font-semibold text-emerald-400 block mb-1">Take Profit ($)</label>
+                  <label className="text-[10px] font-semibold text-[#42D392] block mb-1">Take Profit ($)</label>
                   <input
                     type="number"
                     step="0.01"
                     value={takeProfit}
                     onChange={(e) => setTakeProfit(e.target.value)}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-xl px-2 py-1 text-xs text-white font-mono focus:outline-none"
+                    className="w-full bg-[#171C24] border border-[#28313D] rounded-xl px-2 py-1 text-xs text-[#F4F7FA] font-mono focus:outline-none"
                   />
                 </div>
               </div>
             )}
 
             {/* Estimated Value & Cash balance check */}
-            <div className="p-3 bg-slate-950/80 rounded-xl border border-slate-800 text-[11px] space-y-1">
-              <div className="flex justify-between text-slate-400">
+            <div className="p-3 bg-[#0B0D12]/80 rounded-xl border border-[#28313D] text-[11px] space-y-1">
+              <div className="flex justify-between text-[#9AA6B2]">
                 <span>Estimated Value:</span>
-                <span className="font-mono font-bold text-white">
+                <span className="font-mono font-bold text-[#F4F7FA]">
                   ${((parseFloat(shares) || 0) * (orderType === 'MARKET' ? currentPrice : parseFloat(limitPrice) || currentPrice)).toFixed(2)}
                 </span>
               </div>
-              <div className="flex justify-between text-slate-400">
+              <div className="flex justify-between text-[#9AA6B2]">
                 <span>Available Margin:</span>
-                <span className="font-mono text-emerald-400">${metrics.cashBalance.toFixed(2)}</span>
+                <span className="font-mono text-[#42D392]">${metrics.cashBalance.toFixed(2)}</span>
               </div>
             </div>
 
@@ -383,15 +383,15 @@ export const TradingTerminal: React.FC = () => {
               type="submit"
               className={`w-full py-2.5 rounded-xl font-bold text-xs transition shadow-lg active:scale-95 flex items-center justify-center gap-1.5 ${
                 side === 'BUY'
-                  ? 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-emerald-500/20'
-                  : 'bg-rose-500 hover:bg-rose-400 text-white shadow-rose-500/20'
+                  ? 'bg-[#19C3E6] hover:bg-[#14A8C7] text-slate-950 shadow-[#19C3E6]/20'
+                  : 'bg-[#FF5C5C] hover:bg-[#FF5C5C] text-[#F4F7FA] shadow-[#FF5C5C]/20'
               }`}
             >
               <Zap className="w-3.5 h-3.5" /> Place {side} {orderType} Order
             </button>
           </form>
 
-          <div className="text-[10px] text-slate-500 text-center font-mono mt-2">
+          <div className="text-[10px] text-[#5A6572] text-center font-mono mt-2">
             Margin Multiplier: 4x Intra-Day Enabled
           </div>
         </div>

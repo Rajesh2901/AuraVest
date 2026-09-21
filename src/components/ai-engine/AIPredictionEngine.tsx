@@ -184,23 +184,23 @@ export const AIPredictionEngine: React.FC = () => {
   const expectedLinePath = activeData.projectedPoints.map((pt, i) => `${i === 0 ? 'M' : 'L'} ${getX(i)} ${getY(pt.expected)}`).join(' ');
 
   return (
-    <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 lg:p-8 shadow-2xl backdrop-blur-2xl text-slate-100 max-w-5xl mx-auto space-y-6">
+    <div className="bg-[#12161D] border border-[#28313D] rounded-2xl p-6 lg:p-8 shadow-2xl backdrop-blur-2xl text-[#F4F7FA] max-w-5xl mx-auto space-y-6">
       {/* HEADER WITH ASSET PICKER & HORIZON SELECTOR */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#28313D] pb-6">
         <div className="flex items-center gap-3">
-          <div className="p-3 bg-purple-500/10 border border-purple-500/20 text-purple-400 rounded-2xl">
+          <div className="p-3 bg-[#A855F7]/15 border border-[#A855F7]/30 text-[#A855F7] rounded-xl">
             <BrainCircuit className="w-7 h-7" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="text-xl font-bold tracking-tight text-white">{activeData.assetName}</h2>
-              <span className="text-xs font-mono px-2 py-0.5 bg-slate-800 text-slate-400 rounded-md">{activeData.symbol}</span>
-              <span className="text-xs font-medium px-2 py-0.5 bg-purple-500/20 text-purple-300 rounded-md flex items-center gap-1">
+              <h2 className="text-xl font-bold tracking-tight text-[#F4F7FA]">{activeData.assetName}</h2>
+              <span className="text-xs font-mono px-2 py-0.5 bg-[#171C24] text-[#9AA6B2] rounded-md">{activeData.symbol}</span>
+              <span className="text-xs font-medium px-2 py-0.5 bg-[#A855F7]/15 text-[#A855F7] rounded-md flex items-center gap-1">
                 <Sparkles className="w-3 h-3" /> AI Forecasting
               </span>
             </div>
-            <p className="text-xs text-slate-400 mt-1">
-              Current Price: <span className="text-white font-mono font-bold">${activeData.currentPrice.toFixed(2)}</span> · Model Confidence: <span className="text-emerald-400 font-mono font-bold">{activeData.modelConfidenceScore}%</span>
+            <p className="text-xs text-[#9AA6B2] mt-1">
+              Current Price: <span className="text-[#F4F7FA] font-mono font-bold">${activeData.currentPrice.toFixed(2)}</span> · Model Confidence: <span className="text-[#42D392] font-mono font-bold">{activeData.modelConfidenceScore}%</span>
             </p>
           </div>
         </div>
@@ -208,15 +208,15 @@ export const AIPredictionEngine: React.FC = () => {
         {/* Toggles */}
         <div className="flex flex-wrap items-center gap-3">
           {/* Asset Select */}
-          <div className="flex items-center bg-slate-800/80 p-1 rounded-xl border border-slate-700/60">
+          <div className="flex items-center bg-[#171C24] p-1 rounded-xl border border-[#28313D]">
             {['NVDA', 'SPY'].map((sym) => (
               <button
                 key={sym}
                 onClick={() => setActiveAsset(sym)}
                 className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
                   activeAsset === sym
-                    ? 'bg-slate-700 text-white shadow'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-[#171C24] text-[#F4F7FA] shadow'
+                    : 'text-[#9AA6B2] hover:text-[#F4F7FA]'
                 }`}
               >
                 {sym}
@@ -225,15 +225,15 @@ export const AIPredictionEngine: React.FC = () => {
           </div>
 
           {/* Horizon Pill Toggle */}
-          <div className="flex items-center bg-slate-800/80 p-1 rounded-xl border border-slate-700/60">
+          <div className="flex items-center bg-[#171C24] p-1 rounded-xl border border-[#28313D]">
             {(['1Y', '3Y', '5Y'] as ForecastHorizon[]).map((hz) => (
               <button
                 key={hz}
                 onClick={() => setSelectedHorizon(hz)}
                 className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${
                   selectedHorizon === hz
-                    ? 'bg-purple-600 text-white shadow-lg shadow-purple-600/30'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-[#A855F7] text-[#F4F7FA] shadow-lg shadow-[#A855F7]/20'
+                    : 'text-[#9AA6B2] hover:text-[#F4F7FA]'
                 }`}
               >
                 {hz} Horizon
@@ -246,16 +246,16 @@ export const AIPredictionEngine: React.FC = () => {
       {/* 2-COLUMN LAYOUT: CONFIDENCE BAND PROJECTIONS & SENTIMENT SPEEDOMETER */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Interactive Confidence Band Chart */}
-        <div className="lg:col-span-2 bg-slate-950/60 border border-slate-800/80 p-5 rounded-2xl relative">
+        <div className="lg:col-span-2 bg-[#0B0D12] border border-[#28313D] p-5 rounded-xl relative">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-              <TrendingUp className="w-4 h-4 text-purple-400" />
+            <span className="text-xs font-semibold text-[#9AA6B2] uppercase tracking-wider flex items-center gap-1.5">
+              <TrendingUp className="w-4 h-4 text-[#A855F7]" />
               Monte Carlo Probabilistic Trajectory
             </span>
             <div className="flex items-center gap-3 text-[11px] font-mono">
-              <span className="flex items-center gap-1 text-emerald-400"><span className="w-2 h-2 rounded-full bg-emerald-400" /> +2σ Optimistic</span>
-              <span className="flex items-center gap-1 text-purple-400"><span className="w-2 h-2 rounded-full bg-purple-400" /> μ Expected</span>
-              <span className="flex items-center gap-1 text-amber-400"><span className="w-2 h-2 rounded-full bg-amber-400" /> -2σ Conservative</span>
+              <span className="flex items-center gap-1 text-[#42D392]"><span className="w-2 h-2 rounded-full bg-[#42D392]" /> +2σ Optimistic</span>
+              <span className="flex items-center gap-1 text-[#A855F7]"><span className="w-2 h-2 rounded-full bg-[#A855F7]" /> μ Expected</span>
+              <span className="flex items-center gap-1 text-[#F4B860]"><span className="w-2 h-2 rounded-full bg-[#F4B860]" /> -2σ Conservative</span>
             </div>
           </div>
 
@@ -266,18 +266,18 @@ export const AIPredictionEngine: React.FC = () => {
               <path d={bandPath} fill="rgba(168, 85, 247, 0.12)" stroke="none" />
 
               {/* Trajectory Guide Lines */}
-              <path d={upperPath} fill="none" stroke="#10B981" strokeWidth="1.5" strokeDasharray="4 4" />
+              <path d={upperPath} fill="none" stroke="#42D392" strokeWidth="1.5" strokeDasharray="4 4" />
               <path d={expectedLinePath} fill="none" stroke="#A855F7" strokeWidth="2.5" />
-              <path d={activeData.projectedPoints.map((pt, i) => `${i === 0 ? 'M' : 'L'} ${getX(i)} ${getY(pt.conservative)}`).join(' ')} fill="none" stroke="#F59E0B" strokeWidth="1.5" strokeDasharray="4 4" />
+              <path d={activeData.projectedPoints.map((pt, i) => `${i === 0 ? 'M' : 'L'} ${getX(i)} ${getY(pt.conservative)}`).join(' ')} fill="none" stroke="#F4B860" strokeWidth="1.5" strokeDasharray="4 4" />
 
               {/* Data points */}
               {activeData.projectedPoints.map((pt, i) => (
                 <g key={i}>
-                  <circle cx={getX(i)} cy={getY(pt.expected)} r={4} fill="#A855F7" stroke="#0F172A" strokeWidth={2} />
-                  <text x={getX(i)} y={chartHeight - 8} textAnchor="middle" fill="#64748B" fontSize="10" fontFamily="monospace">
+                  <circle cx={getX(i)} cy={getY(pt.expected)} r={4} fill="#A855F7" stroke="#0B0D12" strokeWidth={2} />
+                  <text x={getX(i)} y={chartHeight - 8} textAnchor="middle" fill="#5A6572" fontSize="10" fontFamily="monospace">
                     {pt.date}
                   </text>
-                  <text x={getX(i)} y={getY(pt.expected) - 10} textAnchor="middle" fill="#E2E8F0" fontSize="10" fontWeight="bold" fontFamily="monospace">
+                  <text x={getX(i)} y={getY(pt.expected) - 10} textAnchor="middle" fill="#F4F7FA" fontSize="10" fontWeight="bold" fontFamily="monospace">
                     ${pt.expected.toFixed(0)}
                   </text>
                 </g>
@@ -286,34 +286,34 @@ export const AIPredictionEngine: React.FC = () => {
           </div>
 
           {/* Target Price Callout Cards */}
-          <div className="grid grid-cols-3 gap-3 mt-3 pt-3 border-t border-slate-800">
-            <div className="p-2.5 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-center">
-              <span className="text-[10px] text-emerald-400 font-bold uppercase block">Bullish Target</span>
-              <span className="text-base font-bold text-white font-mono">${activeData.bands.optimistic.toFixed(2)}</span>
-              <span className="text-[10px] text-emerald-400 block font-mono">+{(((activeData.bands.optimistic - activeData.currentPrice) / activeData.currentPrice) * 100).toFixed(1)}%</span>
+          <div className="grid grid-cols-3 gap-3 mt-3 pt-3 border-t border-[#28313D]">
+            <div className="p-2.5 bg-[#103B46] rounded-xl border border-[#19C3E6]/20 text-center">
+              <span className="text-[10px] text-[#42D392] font-bold uppercase block">Bullish Target</span>
+              <span className="text-base font-bold text-[#F4F7FA] font-mono">${activeData.bands.optimistic.toFixed(2)}</span>
+              <span className="text-[10px] text-[#42D392] block font-mono">+{(((activeData.bands.optimistic - activeData.currentPrice) / activeData.currentPrice) * 100).toFixed(1)}%</span>
             </div>
-            <div className="p-2.5 bg-purple-500/10 rounded-xl border border-purple-500/20 text-center">
-              <span className="text-[10px] text-purple-400 font-bold uppercase block">Expected Target</span>
-              <span className="text-base font-bold text-white font-mono">${activeData.bands.expected.toFixed(2)}</span>
-              <span className="text-[10px] text-purple-400 block font-mono">+{(((activeData.bands.expected - activeData.currentPrice) / activeData.currentPrice) * 100).toFixed(1)}%</span>
+            <div className="p-2.5 bg-[#A855F7]/15 rounded-xl border border-[#A855F7]/30 text-center">
+              <span className="text-[10px] text-[#A855F7] font-bold uppercase block">Expected Target</span>
+              <span className="text-base font-bold text-[#F4F7FA] font-mono">${activeData.bands.expected.toFixed(2)}</span>
+              <span className="text-[10px] text-[#A855F7] block font-mono">+{(((activeData.bands.expected - activeData.currentPrice) / activeData.currentPrice) * 100).toFixed(1)}%</span>
             </div>
-            <div className="p-2.5 bg-amber-500/10 rounded-xl border border-amber-500/20 text-center">
-              <span className="text-[10px] text-amber-400 font-bold uppercase block">Base Floor</span>
-              <span className="text-base font-bold text-white font-mono">${activeData.bands.conservative.toFixed(2)}</span>
-              <span className="text-[10px] text-amber-400 block font-mono">{(((activeData.bands.conservative - activeData.currentPrice) / activeData.currentPrice) * 100).toFixed(1)}%</span>
+            <div className="p-2.5 bg-[#F4B860]/10 rounded-xl border border-[#F4B860]/20 text-center">
+              <span className="text-[10px] text-[#F4B860] font-bold uppercase block">Base Floor</span>
+              <span className="text-base font-bold text-[#F4F7FA] font-mono">${activeData.bands.conservative.toFixed(2)}</span>
+              <span className="text-[10px] text-[#F4B860] block font-mono">{(((activeData.bands.conservative - activeData.currentPrice) / activeData.currentPrice) * 100).toFixed(1)}%</span>
             </div>
           </div>
         </div>
 
         {/* Right Column: Real-Time Market Sentiment Gauge */}
-        <div className="bg-slate-950/60 border border-slate-800/80 p-5 rounded-2xl flex flex-col justify-between">
+        <div className="bg-[#0B0D12] border border-[#28313D] p-5 rounded-xl flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                <Gauge className="w-4 h-4 text-emerald-400" />
+              <span className="text-xs font-semibold text-[#9AA6B2] uppercase tracking-wider flex items-center gap-1.5">
+                <Gauge className="w-4 h-4 text-[#42D392]" />
                 Aggregated Sentiment
               </span>
-              <span className="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 font-bold text-xs rounded-full">
+              <span className="px-2 py-0.5 bg-[#103B46] text-[#42D392] font-bold text-xs rounded-full">
                 {activeData.sentiment.label}
               </span>
             </div>
@@ -322,60 +322,60 @@ export const AIPredictionEngine: React.FC = () => {
             <div className="flex flex-col items-center justify-center my-2">
               <div className="relative w-36 h-20 flex items-end justify-center">
                 {/* Semi-circle background track */}
-                <div className="w-36 h-18 border-t-[14px] border-l-[14px] border-r-[14px] border-slate-800 rounded-t-full absolute inset-0" />
+                <div className="w-36 h-18 border-t-[14px] border-l-[14px] border-r-[14px] border-[#171C24] rounded-t-full absolute inset-0" />
                 {/* Colored active arc */}
                 <div 
-                  className="w-36 h-18 border-t-[14px] border-l-[14px] border-r-[14px] border-emerald-500 rounded-t-full absolute inset-0 opacity-80"
+                  className="w-36 h-18 border-t-[14px] border-l-[14px] border-r-[14px] border-[#19C3E6] rounded-t-full absolute inset-0 opacity-80"
                   style={{
                     clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
                     transform: `rotate(${(activeData.sentiment.compositeScore / 100) * 180 - 180}deg)`,
                     transformOrigin: 'bottom center',
                   }}
                 />
-                <span className="text-2xl font-black text-white font-mono z-10">
+                <span className="text-2xl font-black text-[#F4F7FA] font-mono z-10">
                   {activeData.sentiment.compositeScore}
                 </span>
               </div>
-              <span className="text-[11px] text-slate-400 mt-2 font-mono">0 (Fear) — 100 (Greed)</span>
+              <span className="text-[11px] text-[#9AA6B2] mt-2 font-mono">0 (Fear) — 100 (Greed)</span>
             </div>
 
             {/* Sub-Score Bars */}
             <div className="space-y-2.5 mt-4 text-xs">
               <div>
-                <div className="flex justify-between text-slate-400 mb-1">
+                <div className="flex justify-between text-[#9AA6B2] mb-1">
                   <span>News NLP Sentiment</span>
-                  <span className="font-mono text-white">{activeData.sentiment.newsScore}%</span>
+                  <span className="font-mono text-[#F4F7FA]">{activeData.sentiment.newsScore}%</span>
                 </div>
-                <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-emerald-400 rounded-full" style={{ width: `${activeData.sentiment.newsScore}%` }} />
+                <div className="w-full h-1.5 bg-[#171C24] rounded-full overflow-hidden">
+                  <div className="h-full bg-[#42D392] rounded-full" style={{ width: `${activeData.sentiment.newsScore}%` }} />
                 </div>
               </div>
 
               <div>
-                <div className="flex justify-between text-slate-400 mb-1">
+                <div className="flex justify-between text-[#9AA6B2] mb-1">
                   <span>Social Media Buzz Volume</span>
-                  <span className="font-mono text-white">{activeData.sentiment.socialVolumeScore}%</span>
+                  <span className="font-mono text-[#F4F7FA]">{activeData.sentiment.socialVolumeScore}%</span>
                 </div>
-                <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-blue-400 rounded-full" style={{ width: `${activeData.sentiment.socialVolumeScore}%` }} />
+                <div className="w-full h-1.5 bg-[#171C24] rounded-full overflow-hidden">
+                  <div className="h-full bg-[#3B82F6] rounded-full" style={{ width: `${activeData.sentiment.socialVolumeScore}%` }} />
                 </div>
               </div>
             </div>
           </div>
 
           {/* Headline Summary */}
-          <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl mt-4 text-xs text-slate-300">
-            <span className="font-semibold text-purple-300 block mb-1">AI Executive Take:</span>
+          <div className="p-3 bg-[#12161D] border border-[#28313D] rounded-xl mt-4 text-xs text-[#9AA6B2]">
+            <span className="font-semibold text-[#A855F7] block mb-1">AI Executive Take:</span>
             "{activeData.sentiment.headlineSummary}"
           </div>
         </div>
       </div>
 
       {/* REGULATORY RISK WARNING DISCLAIMER BANNER */}
-      <div className="p-4 bg-amber-500/10 border border-amber-500/20 rounded-2xl flex items-start gap-3 text-amber-200/90 text-xs">
-        <AlertTriangle className="w-5 h-5 flex-shrink-0 text-amber-400 mt-0.5" />
+      <div className="p-4 bg-[#F4B860]/10 border border-[#F4B860]/20 rounded-xl flex items-start gap-3 text-[#F4B860] text-xs">
+        <AlertTriangle className="w-5 h-5 flex-shrink-0 text-[#F4B860] mt-0.5" />
         <div>
-          <span className="font-bold text-amber-300 uppercase tracking-wide mr-1">Regulatory & Compliance Notice:</span>
+          <span className="font-bold text-[#F4B860] uppercase tracking-wide mr-1">Regulatory & Compliance Notice:</span>
           AI and algorithmic projections displayed above represent probabilistic simulations based on historical drift, autoregression, and simulated market sentiment. These figures do not represent guaranteed returns or fiduciary investment advice. Capital is subject to market volatility and loss.
         </div>
       </div>
